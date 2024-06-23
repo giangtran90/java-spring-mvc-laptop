@@ -8,7 +8,16 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index() {
-		return "Greetings from Spring Boot!";
+		return "Hello Spring Boot!";
 	}
 
+	@GetMapping("user")
+	public String userPage() {
+		return "Only user can access";
+	}
+
+	@GetMapping("admin")
+	public String adminPage() {
+		return "Only admin can access";
+	}
 }
