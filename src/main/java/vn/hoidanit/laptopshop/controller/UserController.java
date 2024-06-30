@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import vn.hoidanit.laptopshop.service.UserService;
 
-//@Controller
-@RestController
+@Controller
+//@RestController
 public class UserController {
-
-//	@RequestMapping("/")
-//	public String getHomePage() {
-//		return "Hello Controller";
-//	}
+	
 	final private UserService userService;
 
 	private UserController(UserService userService) {
@@ -22,8 +18,14 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/")
+	@RequestMapping("/")
 	public String getHomePage() {
-		return userService.handleHello();
+		String test = userService.handleHello();
+		return "test";
 	}
+
+//	@GetMapping("/")
+//	public String getHomePage() {
+//		return userService.handleHello();
+//	}
 }
