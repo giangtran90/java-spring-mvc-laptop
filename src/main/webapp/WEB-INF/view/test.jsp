@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +8,6 @@
 </head>
 <body>
     Hello JSP!
+    <h1>${test}</h1>
 </body>
 </html>
