@@ -27,6 +27,10 @@ public class UserController {
 		return "test";
 	}
 
+	@RequestMapping("/admin/user")
+	public String getUserPage(Model model) {
+		return "admin/user/create";
+	}
 //	@GetMapping("/")
 //	public String getHomePage() {
 //		return userService.handleHello();
