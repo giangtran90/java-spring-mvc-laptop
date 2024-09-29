@@ -7,6 +7,7 @@
     <title>Hello</title>
     <!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- css tu cau hinh -->
 	<link href="css/demo.css" rel="stylesheet">
 	<!-- Latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,7 +16,10 @@
 </head>
 <body>
     Hello JSP!
+    <!-- jsp -->
     <h1>${test}</h1>
-    <button>Submit</button>
+    <!-- jstl -->
+    <h2><c:out value="${giang}" /></h2>
+    <button class="btn btn-success">Submit</button>
 </body>
 </html>

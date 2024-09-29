@@ -23,6 +23,7 @@ public class UserController {
 	public String getHomePage(Model model) {
 		String test = userService.handleHello();
 		model.addAttribute("test", test);
+		model.addAttribute("giang", "test thu view");
 		return "test";
 	}
 
