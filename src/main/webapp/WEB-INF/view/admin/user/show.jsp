@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Page</title>
+<title>User Detail ${id}</title>
 <!-- Latest compiled and minified CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -29,34 +29,20 @@
 		<div class="row">
 			<div class="col-12 mx-auto">
 				<div class="d-flex justify-content-between mb-1">
-					<h3>Table users</h3>
-					<a href="user/create" class="btn btn-primary">Create user</a>
+					<h3>User Details</h3>
 				</div>
 				<hr/>
-				<table class="table table-striped table-bordered table-hover">
-				  <thead>
-				    <tr>
-				      <th scope="col">ID</th>
-				      <th scope="col">Email</th>
-				      <th scope="col">Full Name</th>
-				      <th scope="col">Action</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <c:forEach var="user" items="${listUsers}">
-				        <tr>
-					      <th scope="row">${user.id}</th>
-					      <td>${user.email}</td>
-					      <td>${user.fullName}</td>
-					      <td>
-					      	  <a href="user/${user.id}" class="btn btn-success">View</a>
-					      	  <button type="button" class="btn btn-warning">Update</button>
-					      	  <button type="button" class="btn btn-danger">Delete</button>
-					      </td>
-				        </tr>
-				    </c:forEach>
-				  </tbody>
-				</table>
+			 	<div class="card" style="width: 60%;">
+				  <div class="card-header">
+				    User Information
+				  </div>
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item">ID: ${userDetail.id}</li>
+				    <li class="list-group-item">Email: ${userDetail.email}</li>
+				    <li class="list-group-item">Full Name: ${userDetail.fullName}</li>
+				    <li class="list-group-item">Address: ${userDetail.address}</li>
+				  </ul>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -26,12 +27,16 @@ public class UserService {
 	}
 
 	public List<User> fetchAllUsers() {
-		// TODO Auto-generated method stub
 		return userRepository.findAll();
 	}
 
 	public List<User> fetchAllUsersByEmail(String email) {
-		// TODO Auto-generated method stub
 		return userRepository.findAllByEmail(email);
+	}
+
+	public User fetchUserById(long id) {
+		Optional<User> user = userRepository.findById(id);
+		System.out.println(user);
+		return user.get();
 	}
 }
