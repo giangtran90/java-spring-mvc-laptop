@@ -26,44 +26,46 @@
 
 <body>
 	<div class="container mt-5">
-		<div class="d-flex justify-content-between mb-1">
-			<h3>Table users</h3>
-			<a href="user/create" class="btn btn-primary">Create user</a>
+		<div class="row">
+			<div class="col-12 mx-auto">
+				<div class="d-flex justify-content-between mb-1">
+					<h3>Table users</h3>
+					<a href="user/create" class="btn btn-primary">Create user</a>
+				</div>
+				<hr/>
+				<table class="table table-striped table-bordered table-hover">
+				  <thead>
+				    <tr>
+				      <th scope="col">ID</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Full Name</th>
+				      <th scope="col">Action</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Mark</td>
+				      <td>Otto</td>
+				      <td>
+				      	  <button type="button" class="btn btn-success">View</button>
+				      	  <button type="button" class="btn btn-warning">Update</button>
+				      	  <button type="button" class="btn btn-danger">Delete</button>
+				      </td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Jacob</td>
+				      <td>Thornton</td>
+				      <td>
+				      	  <button type="button" class="btn btn-success">View</button>
+				      	  <button type="button" class="btn btn-warning">Update</button>
+				      	  <button type="button" class="btn btn-danger">Delete</button></td>
+				      </tr>
+				  </tbody>
+				</table>
+			</div>
 		</div>
-		<div>
-			<table class="table table-striped table-bordered table-hover">
-			  <thead>
-			    <tr>
-			      <th scope="col">ID</th>
-			      <th scope="col">Email</th>
-			      <th scope="col">Full Name</th>
-			      <th scope="col">Action</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>
-			      	  <button type="button" class="btn btn-success">View</button>
-			      	  <button type="button" class="btn btn-warning">Update</button>
-			      	  <button type="button" class="btn btn-danger">Delete</button>
-			      </td>
-			    </tr>
-			    <tr>
-			      <th scope="row">2</th>
-			      <td>Jacob</td>
-			      <td>Thornton</td>
-			      <td>
-			      	  <button type="button" class="btn btn-success">View</button>
-			      	  <button type="button" class="btn btn-warning">Update</button>
-			      	  <button type="button" class="btn btn-danger">Delete</button></td>
-			      </tr>
-			  </tbody>
-			</table>
-		</div>
-
 	</div>
 </body>
 
