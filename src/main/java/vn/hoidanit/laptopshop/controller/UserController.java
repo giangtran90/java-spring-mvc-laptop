@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -92,5 +93,23 @@ public class UserController {
 		}
 		return "redirect:/admin/user";
 	}
+	
+	// get delete page
+	@GetMapping("/admin/user/delete/{id}")
+	public String getDeleteUserPage(Model model, @PathVariable long id) {
+		User currentUser = userService.fetchUserById(id);
+		model.addAttribute("deleteUser", currentUser);
+		return "admin/user/delete-user";
+	}
+	
+	// delete user
+	@PostMapping("/admin/user/delete")
+	public String postDeleteUserPage(Model model, @ModelAttribute("deleteUser") User deleteUser) {
+		User currentUser = userService.fetchUserById(deleteUser.getId());
+		if (currentUser != null) {
+			this.userService.deleteUserById(currentUser.getId());
+		}
+		return "redirect:/admin/user";
+	}	
 
 }
