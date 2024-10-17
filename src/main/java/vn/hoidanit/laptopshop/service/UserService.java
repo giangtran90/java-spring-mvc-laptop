@@ -23,15 +23,15 @@ public class UserService {
 	}
 	
 	public User handleSaveUser(User user) {
-		return userRepository.save(user);
+		return this.userRepository.save(user);
 	}
 
 	public List<User> fetchAllUsers() {
-		return userRepository.findAll();
+		return this.userRepository.findAll();
 	}
 
 	public List<User> fetchAllUsersByEmail(String email) {
-		return userRepository.findAllByEmail(email);
+		return this.userRepository.findAllByEmail(email);
 	}
 
 	public User fetchUserById(long id) {
