@@ -43,6 +43,7 @@
 				    <li class="list-group-item">Address: ${userDetail.address}</li>
 				  </ul>
 				</div>
+				<a href="/admin/user" class="btn btn-success mt-2">Back</a>
 			</div>
 		</div>
 	</div>
