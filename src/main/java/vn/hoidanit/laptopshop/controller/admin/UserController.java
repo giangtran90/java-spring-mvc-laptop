@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.controller;
+package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class UserController {
 	public String getUserPage(Model model) {
 		List<User> users = userService.fetchAllUsers();
 		model.addAttribute("listUsers", users);
-		return "admin/user/table-user";
+		return "admin/user/show";
 	}
 
 	// get user detail
@@ -50,7 +50,7 @@ public class UserController {
 		User user = userService.fetchUserById(id);
 		model.addAttribute("id", id);
 		model.addAttribute("userDetail", user);
-		return "admin/user/show";
+		return "admin/user/detail";
 	}
 	
 	// get page create
