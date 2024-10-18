@@ -34,7 +34,7 @@
                         </li>
                     </ol>
                     
-                    <div class="container my-auto">
+                    <div class="my-auto">
 						<div class="row">
 							<div class="col-md-6 col-12 mx-auto">
 								<h3>Delete a user with ID = ${id}</h3>

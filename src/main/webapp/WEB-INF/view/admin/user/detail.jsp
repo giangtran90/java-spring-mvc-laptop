@@ -33,7 +33,7 @@
                         </li>
                     </ol>
                     
-                    <div class="container my-auto">
+                    <div class="my-auto">
 						<div class="row">
 							<div class="col-12 mx-auto">
 								<div class="d-flex justify-content-between">

@@ -34,7 +34,7 @@
                         </li>
                     </ol>
                     
-                    <div class="container mt-5">
+                    <div class="my-auto">
 						<div class="row">
 							<div class="col-md-6 col-12 mx-auto">
 								<h3>Create a user</h3>
@@ -61,7 +61,7 @@
 										<form:input type="text" class="form-control" path="address" />
 									</div>
 				
-									<button type="submit" class="btn btn-primary mb-2">Create</button>
+									<button type="submit" class="btn btn-primary">Create</button>
 								</form:form>
 							</div>
 						</div>
