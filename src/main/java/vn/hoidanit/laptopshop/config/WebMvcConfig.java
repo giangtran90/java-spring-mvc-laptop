@@ -29,9 +29,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.viewResolver(viewResolver());
 	}
 
-	// cấu hình thêm file css, ** là phía sau dù có thêm bao nhiêu / cũng sẽ lấy file css
+	// cấu hình thêm file css, js, ** là phía sau dù có thêm bao nhiêu / cũng sẽ lấy file css
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
+		registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
 	}
 }
