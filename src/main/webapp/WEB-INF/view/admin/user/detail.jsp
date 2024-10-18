@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- them the vao de co the goi duoc cac input -->
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="laptopshop" />
     <meta name="author" content="HG" />
-    <title>Manage Users</title>
+    <title>User Detail ${id}</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,43 +26,32 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Manage Users</h1>
+                    <h1 class="mt-4">Information</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active"><a href="/admin" target="">Dashboard</a>/Users</li>
+                        <li class="breadcrumb-item active"><a href="/admin" target="">Dashboard</a>/
+                        	<a href="/admin/user" target="">Users</a>/Detail
+                        </li>
                     </ol>
                     
-                    <div class="container mt-5">
+                    <div class="container my-auto">
 						<div class="row">
 							<div class="col-12 mx-auto">
-								<div class="d-flex justify-content-between mb-1">
-									<h3>Table users</h3>
-									<a href="user/create" class="btn btn-primary">Create user</a>
+								<div class="d-flex justify-content-between">
+									<h3>User Details</h3>
+									<a href="/admin/user" class="btn btn-success mt-2">Back</a>
 								</div>
 								<hr/>
-								<table class="table table-striped table-bordered table-hover">
-								  <thead>
-								    <tr>
-								      <th scope="col">ID</th>
-								      <th scope="col">Email</th>
-								      <th scope="col">Full Name</th>
-								      <th scope="col">Action</th>
-								    </tr>
-								  </thead>
-								  <tbody>
-								    <c:forEach var="user" items="${listUsers}">
-								        <tr>
-									      <th scope="row">${user.id}</th>
-									      <td>${user.email}</td>
-									      <td>${user.fullName}</td>
-									      <td>
-									      	  <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
-									      	  <a href="/admin/user/update/${user.id}" class="btn btn-warning">Update</a>
-									      	  <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Delete</a>
-									      </td>
-								        </tr>
-								    </c:forEach>
-								  </tbody>
-								</table>
+							 	<div class="card" style="width: 60%;">
+								  <div class="card-header">
+								    User Information
+								  </div>
+								  <ul class="list-group list-group-flush">
+								    <li class="list-group-item">ID: ${userDetail.id}</li>
+								    <li class="list-group-item">Email: ${userDetail.email}</li>
+								    <li class="list-group-item">Full Name: ${userDetail.fullName}</li>
+								    <li class="list-group-item">Address: ${userDetail.address}</li>
+								  </ul>
+								</div>
 							</div>
 						</div>
 					</div>
