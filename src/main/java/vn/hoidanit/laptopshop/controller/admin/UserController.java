@@ -18,18 +18,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.ServletContext;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.service.UploadFileService;
 import vn.hoidanit.laptopshop.service.UserService;
 
 @Controller
 public class UserController {
 	
 	private final UserService userService;
-	private final ServletContext servletContext;
+	private final UploadFileService uploadFileService;
 
-	private UserController(UserService userService, ServletContext servletContext) {
+	private UserController(UserService userService, UploadFileService uploadFileService) {
 		super();
 		this.userService = userService;
-		this.servletContext = servletContext;
+		this.uploadFileService = uploadFileService;
 	}
 
 	@RequestMapping("/")
@@ -77,22 +78,9 @@ public class UserController {
 	 */
 	@PostMapping(value = "/admin/user/create")
 	public String createUserPage(Model model, @ModelAttribute("newUser") User user, @RequestParam("avatarFile") MultipartFile file) {
-//		userService.handleSaveUser(user);
-		
-		try {
-			byte[] bytes = file.getBytes();
-			String rootPath = this.servletContext.getRealPath("/resources/images");
-			File dir = new File(rootPath + File.separator + "avatar");
-			if (!dir.exists())
-				dir.mkdirs();
-			// Create the file on server
-			File serverFile = new File(dir.getAbsolutePath() + File.separator + +System.currentTimeMillis() + "-" + file.getOriginalFilename());
-			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-			stream.write(bytes);
-			stream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		String fileName = uploadFileService.handleSaveUploadFile(file, "avatar");
+		System.out.println(fileName);
+		//		userService.handleSaveUser(user);
 		return "redirect:/admin/user";
 	}
 	
