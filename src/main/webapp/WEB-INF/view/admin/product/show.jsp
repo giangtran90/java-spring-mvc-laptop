@@ -50,30 +50,19 @@
 					                    </tr>
 					                  </thead>
 					                  <tbody>
-					                    <!--<c:forEach var="user" items="${listUsers}">
+					                    <c:forEach var="product" items="${listProducts}">
 					                        <tr>
-					                          <th scope="row">${user.id}</th>
-					                          <td>${user.email}</td>
-					                          <td>${user.fullName}</td>
-					                          <td>${user.role.name}</td>
+					                          <th scope="row">${product.id}</th>
+					                          <td>${product.name}</td>
+					                          <td>${product.price}</td>
+					                          <td>${product.factory}</td>
 					                          <td>
-					                                <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
-					                                <a href="/admin/user/update/${user.id}" class="btn btn-warning">Update</a>
-					                                <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Delete</a>
+					                                <a href="/admin/product/${product.id}" class="btn btn-success">View</a>
+					                                <a href="/admin/product/update/${product.id}" class="btn btn-warning">Update</a>
+					                                <a href="/admin/product/delete/${product.id}" class="btn btn-danger">Delete</a>
 					                          </td>
 					                        </tr>
-					                    </c:forEach>-->
-					                    <tr>
-				                          <th scope="row">1</th>
-				                          <td>Macbook air</td>
-				                          <td>499</td>
-				                          <td>Apple</td>
-				                          <td>
-				                                <a href="/admin/product/${product.id}" class="btn btn-success">View</a>
-				                                <a href="/admin/product/update/${product.id}" class="btn btn-warning">Update</a>
-				                                <a href="/admin/product/delete/${product.id}" class="btn btn-danger">Delete</a>
-				                          </td>
-				                        </tr>
+					                    </c:forEach>
 					                  </tbody>
 					                </table>
 					            </div>
