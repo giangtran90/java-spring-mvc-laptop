@@ -95,12 +95,17 @@ public class UserController {
 	
 	// update user
 	@PostMapping("/admin/user/update")
-	public String updateUser(Model model, @ModelAttribute("updateUser") User updateUser) {
+	public String updateUser(Model model, @ModelAttribute("updateUser") User updateUser, @RequestParam("avatarFile") MultipartFile file) {
 		User currentUser = userService.fetchUserById(updateUser.getId());
+		String avatar = uploadFileService.handleSaveUploadFile(file, "avatar");
 		if (currentUser != null) {
 			currentUser.setFullName(updateUser.getFullName());
 			currentUser.setAddress(updateUser.getAddress());
 			currentUser.setPhone(updateUser.getPhone());
+			currentUser.setRole(userService.fetchRoleByName(updateUser.getRole().getName()));
+			if (avatar != null && !"".equals(avatar)) {
+				currentUser.setAvatar(avatar);
+			}
 			this.userService.handleSaveUser(currentUser);
 		}
 		return "redirect:/admin/user";

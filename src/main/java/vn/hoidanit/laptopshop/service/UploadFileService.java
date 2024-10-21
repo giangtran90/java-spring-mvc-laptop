@@ -30,11 +30,13 @@ public class UploadFileService {
 			if (!dir.exists())
 				dir.mkdirs();
 			// Create the file on server
-			finalName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
-			File serverFile = new File(dir.getAbsolutePath() + File.separator + finalName);
-			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-			stream.write(bytes);
-			stream.close();
+			if (file.getOriginalFilename() != null && !"".equals(file.getOriginalFilename())) {
+				finalName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
+				File serverFile = new File(dir.getAbsolutePath() + File.separator + finalName);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.close();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

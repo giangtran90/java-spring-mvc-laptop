@@ -47,9 +47,11 @@
 								  </div>
 								  <ul class="list-group list-group-flush">
 								    <li class="list-group-item">ID: ${userDetail.id}</li>
+								    <li class="list-group-item">Role: ${userDetail.role.name}</li>
 								    <li class="list-group-item">Email: ${userDetail.email}</li>
 								    <li class="list-group-item">Full Name: ${userDetail.fullName}</li>
 								    <li class="list-group-item">Address: ${userDetail.address}</li>
+								    <li class="list-group-item">Avatar: <img src="/images/avatar/${userDetail.avatar}" style="max-height: 60px;" alt="avatar preview" /></li>
 								  </ul>
 								</div>
 							</div>
