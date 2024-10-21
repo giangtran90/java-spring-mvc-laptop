@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- them the vao de co the goi duoc cac input -->
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="laptopshop" />
     <meta name="author" content="HG" />
-    <title>Delete User</title>
+    <title>User Detail ${id}</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,29 +26,34 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Update User</h1>
+                    <h1 class="mt-4">Information</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active"><a href="/admin" target="">Dashboard</a>/
-                        	<a href="/admin/user" target="">Users</a>/Delete
+                        	<a href="/admin/user" target="">Users</a>/Detail
                         </li>
                     </ol>
                     
                     <div class="my-auto">
 						<div class="row">
-							<div class="col-md-6 col-12 mx-auto">
-								<h3>Delete a user with ID = ${id}</h3>
-								<hr />
-								<div class="alert alert-danger" role="alert">
-								  Are you sure you want to delete user ?
+							<div class="col-12 mx-auto">
+								<div class="d-flex justify-content-between">
+									<h3>User Details</h3>
+									<a href="/admin/user" class="btn btn-success mt-2">Back</a>
 								</div>
-								<form:form method="post" action="/admin/user/delete" modelAttribute="deleteUser">
-									<div class="mb-3" style="display: none">
-										<label class="form-label">Id:</label> 
-										<form:input type="text" class="form-control" path="id" value="${id}"/>
-									</div>
-				
-									<button type="submit" class="btn btn-warning">Confirm</button>
-								</form:form>
+								<hr/>
+							 	<div class="card" style="width: 60%;">
+								  <div class="card-header">
+								    User Information
+								  </div>
+								  <ul class="list-group list-group-flush">
+								    <li class="list-group-item">ID: ${userDetail.id}</li>
+								    <li class="list-group-item">Role: ${userDetail.role.name}</li>
+								    <li class="list-group-item">Email: ${userDetail.email}</li>
+								    <li class="list-group-item">Full Name: ${userDetail.fullName}</li>
+								    <li class="list-group-item">Address: ${userDetail.address}</li>
+								    <li class="list-group-item">Avatar: <img src="/images/avatar/${userDetail.avatar}" style="max-height: 60px;" alt="avatar preview" /></li>
+								  </ul>
+								</div>
 							</div>
 						</div>
 					</div>
