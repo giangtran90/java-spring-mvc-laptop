@@ -77,7 +77,7 @@
 									</div>
 									<div class="mb-3 col-12">
 										<label class="form-label">Detail description:</label> 
-										<form:input type="text" class="form-control ${not empty errorDetailDesc?'is-invalid':''}" path="detailDesc" />
+										<form:textarea type="text" class="form-control ${not empty errorDetailDesc?'is-invalid':''}" path="detailDesc" />
 										${errorDetailDesc}
 									</div>
 									<div class="mb-3 col-12 col-md-6">
@@ -99,6 +99,7 @@
                                             <form:option value="HP">Hp</form:option>
                                             <form:option value="ACER">Acer</form:option>
                                             <form:option value="MSI">Msi</form:option>
+                                            <form:option value="LG">Lg</form:option>
                                         </form:select>
                                     </div>
 									<div class="mb-3 col-12 col-md-6">

@@ -18,6 +18,14 @@
 	<script>
 		$(document).ready(() => {
 		const avatarFile = $("#avatarFile");
+		const orgImage = "${updateProduct.image}";
+		
+		if (orgImage) {
+			const urlImage = "/images/product/" + orgImage;
+			$("#avatarPreview").attr("src", urlImage);
+			$("#avatarPreview").css({ "display": "block" });
+		}
+		
 		avatarFile.change(function (e) {
 		const imgURL = URL.createObjectURL(e.target.files[0]);
 			$("#avatarPreview").attr("src", imgURL);
@@ -77,7 +85,7 @@
 									</div>
 									<div class="mb-3 col-12">
 										<label class="form-label">Detail description:</label> 
-										<form:input type="text" class="form-control ${not empty errorDetailDesc?'is-invalid':''}" path="detailDesc" />
+										<form:textarea type="text" class="form-control ${not empty errorDetailDesc?'is-invalid':''}" path="detailDesc" />
 										${errorDetailDesc}
 									</div>
 									<div class="mb-3 col-12 col-md-6">
@@ -95,7 +103,7 @@
                                         <input class="form-control" type="file" id="avatarFile" accept=".png, .jpg, .jpeg" name="avatarFile" />
                                     </div>
 									<div class="col-12 mb-3">
-                                        <img src="/images/product/${updateProduct.image}" style="max-height: 250px;" alt="avatar preview" id="avatarPreview" />
+                                        <img style="max-height: 250px; display: none;" alt="avatar preview" id="avatarPreview" />
                                     </div>
 									
 									<div class="col-12 mb-5">
