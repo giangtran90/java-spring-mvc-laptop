@@ -83,20 +83,13 @@
 	<!-- Hero End -->
 
 
-	<!-- Featurs Section Start -->
-	
-	<jsp:include page="../layout/feature.jsp" />
-	
-	<!-- Featurs Section End -->
-
-
 	<!-- Fruits Shop Start-->
 	<div class="container-fluid fruite py-5">
 		<div class="container py-5">
 			<div class="tab-class text-center">
 				<div class="row g-4">
 					<div class="col-lg-4 text-start">
-						<h1>Our Organic Products</h1>
+						<h1>Sản phẩm nổi bật</h1>
 					</div>
 					<div class="col-lg-8 text-end">
 						<ul class="nav nav-pills d-inline-flex text-center mb-5">
@@ -397,6 +390,13 @@
 		</div>
 	</div>
 	<!-- Fruits Shop End-->
+
+
+	<!-- Featurs Section Start -->
+	
+	<jsp:include page="../layout/feature.jsp" />
+	
+	<!-- Featurs Section End -->
 
 
 	<jsp:include page="../layout/footer.jsp" />
