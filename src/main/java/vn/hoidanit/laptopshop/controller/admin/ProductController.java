@@ -38,25 +38,27 @@ public class ProductController {
 		return "admin/product/show";
 	}
 	
+	// get page create
 	@GetMapping("/admin/product/create")
 	public String getCreateProductPage(Model model) {
 		model.addAttribute("newProduct", new Product());
 		return "admin/product/create";
 	}
 	
+	// create new product
 	@PostMapping("/admin/product/create")
 	public String createNewProductPage(Model model
 			, @ModelAttribute("newProduct") @Valid Product product
-			, BindingResult newUserBindingResult
+			, BindingResult newProductBindingResult
 			, @RequestParam("avatarFile") MultipartFile file) {
 		
-		List<FieldError> errors = newUserBindingResult.getFieldErrors();
+		List<FieldError> errors = newProductBindingResult.getFieldErrors();
 	    for (FieldError error : errors ) {
 	        System.out.println (error.getField() + " - " + error.getDefaultMessage());
 	    }
 		
 	    // validate
-	    if (newUserBindingResult.hasErrors()) {
+	    if (newProductBindingResult.hasErrors()) {
 	    	return "admin/product/create";
 	    }
 	    
@@ -68,10 +70,51 @@ public class ProductController {
 		return "redirect:/admin/product";
 	}
 	
+	// get view page
 	@GetMapping("/admin/product/{id}")
 	public String getDetailProduct(Model model, @PathVariable Long id) {
 		Product product = productService.fetchProductById(id);
 		model.addAttribute("productDetail", product);
 		return "admin/product/detail";
+	}
+	
+	// get update page
+	@GetMapping("/admin/product/update/{id}")
+	public String getUpdateProductPage(Model model,  @PathVariable Long id) {
+		Product product = productService.fetchProductById(id);
+		model.addAttribute("updateProduct", product);
+		return "/admin/product/update";
+	}
+	
+	// update product
+	@PostMapping("/admin/product/update")
+	public String updateProduct(Model model
+			, @ModelAttribute("updateProduct") @Valid Product product
+			, BindingResult updateProBindingResult
+			, @RequestParam("avatarFile") MultipartFile file) {
+		
+		List<FieldError> errors = updateProBindingResult.getFieldErrors();
+	    for (FieldError error : errors ) {
+	        System.out.println (error.getField() + " - " + error.getDefaultMessage());
+	    }
+		
+	    // validate
+	    if (updateProBindingResult.hasErrors()) {
+	    	return "admin/product/update";
+	    }
+		
+	    Product currentPro = productService.fetchProductById(product.getId());
+	    String image = uploadFileService.handleSaveUploadFile(file, "product");
+	    if (currentPro != null) {
+	    	currentPro.setPrice(product.getPrice());
+	    	currentPro.setDetailDesc(product.getDetailDesc());
+	    	currentPro.setShortDesc(product.getShortDesc());
+	    	currentPro.setQuantity(product.getQuantity());
+	    	if (!"".equals(image)) {
+	    		currentPro.setImage(image);
+	    	}
+	    	productService.handleSaveProduct(currentPro);
+	    }
+		return "redirect:/admin/product";
 	}
 }
