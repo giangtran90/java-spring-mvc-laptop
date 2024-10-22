@@ -21,6 +21,9 @@ public class UploadFileService {
 	}
 
 	public String handleSaveUploadFile(MultipartFile file, String folderUpload) {
+		if (file.isEmpty()) {
+			return "";
+		}
 		// relative path: absolute path
 		String rootPath = this.servletContext.getRealPath("/resources/images");
 		String finalName = "";
@@ -30,13 +33,11 @@ public class UploadFileService {
 			if (!dir.exists())
 				dir.mkdirs();
 			// Create the file on server
-			if (file.getOriginalFilename() != null && !"".equals(file.getOriginalFilename())) {
-				finalName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
-				File serverFile = new File(dir.getAbsolutePath() + File.separator + finalName);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-			}
+			finalName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
+			File serverFile = new File(dir.getAbsolutePath() + File.separator + finalName);
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+			stream.write(bytes);
+			stream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
