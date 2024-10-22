@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -115,6 +116,21 @@ public class ProductController {
 	    	}
 	    	productService.handleSaveProduct(currentPro);
 	    }
+		return "redirect:/admin/product";
+	}
+	
+	// Get delete page
+	@GetMapping("/admin/product/delete/{id}")
+	public String getDeleteProductPage(Model model, @PathVariable Long id) {
+		Product product = productService.fetchProductById(id);
+		model.addAttribute("deleteProduct", product);
+		return "admin/product/delete";
+	}
+	
+	// Delete Product
+	@PostMapping("/admin/product/delete")
+	public String deleteProduct(Model model, @ModelAttribute("deleteProduct") Product product) {
+		productService.deleteProduct(product.getId());
 		return "redirect:/admin/product";
 	}
 }
