@@ -60,4 +60,8 @@ public class UserService {
 		user.setPassword(registerDTO.getPassword());
 		return user;
 	}
+	
+	public User fetchUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 }
