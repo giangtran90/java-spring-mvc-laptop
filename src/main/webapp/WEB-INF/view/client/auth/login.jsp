@@ -27,6 +27,9 @@
                                         	<c:if test="${param.error != null}">
 												<div class="my-2" style="color: red;">Invalid email or password.</div>
 											</c:if>
+                                        	<c:if test="${param.logout != null}">
+												<div class="my-2" style="color: green;">Đăng xuất thành công!</div>
+											</c:if>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" name="username" />
                                                 <label for="inputEmail">Email address</label>
@@ -39,12 +42,13 @@
                                             	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><button class="btn btn-primary btn-block" >Create Account</button></div>
+                                                <div class="d-grid"><button class="btn btn-primary btn-block" >Login</button></div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="/register">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="/">Trang chủ</a></div>
                                     </div>
                                 </div>
                             </div>

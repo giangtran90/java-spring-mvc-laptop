@@ -62,10 +62,12 @@ public class SecurityConfiguration {
 					.anyRequest().authenticated())
 			
 			.formLogin(formLogin -> formLogin
-			.loginPage("/login")
-			.failureUrl("/login?error")
-			.successHandler(customSuccessHandler())
-			.permitAll());
+					.loginPage("/login")
+					.failureUrl("/login?error")
+					.successHandler(customSuccessHandler())
+					.permitAll())
+			
+			.exceptionHandling(ex -> ex.accessDeniedPage("/access-deny"));
 		return http.build();
 	}
 }
