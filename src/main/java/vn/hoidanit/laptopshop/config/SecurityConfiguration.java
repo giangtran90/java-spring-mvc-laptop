@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import jakarta.servlet.DispatcherType;
 import vn.hoidanit.laptopshop.service.CustomUserDetailsService;
@@ -27,6 +28,12 @@ public class SecurityConfiguration {
 	public UserDetailsService userDetailsService(UserService userService) {
 		return new CustomUserDetailsService(userService);
 	}
+	
+	// Dinh nghia 1 Bean de co the su dung
+	@Bean
+	public AuthenticationSuccessHandler customSuccessHandler(){
+	    return new CustomSuccessHandler();
+	}
 
 	@Bean
 	public DaoAuthenticationProvider authProvider(PasswordEncoder passwordEncoder,
@@ -41,16 +48,23 @@ public class SecurityConfiguration {
 	
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		// v6.(dùng . ko nhu v5 .and().then) lamda
 		http
 			.authorizeHttpRequests(authorize -> authorize
 					.dispatcherTypeMatchers(DispatcherType.FORWARD,
 							DispatcherType.INCLUDE).permitAll()
-					.requestMatchers("/", "/login", "/client/**", "/css/**", "/js/**",
-					"/images/**").permitAll()
+					
+					.requestMatchers("/", "/login", "/product/**", "/client/**"
+							, "/css/**", "/js/**", "/images/**").permitAll()
+					
+					.requestMatchers("/admin/**").hasRole("ADMIN")
+					
 					.anyRequest().authenticated())
+			
 			.formLogin(formLogin -> formLogin
 			.loginPage("/login")
 			.failureUrl("/login?error")
+			.successHandler(customSuccessHandler())
 			.permitAll());
 		return http.build();
 	}
