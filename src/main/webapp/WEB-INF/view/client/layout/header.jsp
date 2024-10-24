@@ -35,8 +35,8 @@
 									<li class="d-flex align-items-center flex-column"
 										style="min-width: 300px;"><img
 										style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;"
-										src="/images/product/1711078092373-asus-01.png" />
-										<div class="text-center my-3"><c:out value="${pageContext.request.userPrincipal.name}" /></div></li>
+										src="/images/avatar/${sessionScope.avatar}" />
+										<div class="text-center my-3"><c:out value="${sessionScope.fullName}" /></div></li>
 									<li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
 									<li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
 									<li>
