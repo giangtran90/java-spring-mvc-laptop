@@ -20,7 +20,7 @@ public class Role {
 	private String description;
 	
 	@OneToMany(mappedBy = "role")
-	List<User> users;
+	private List<User> users;
 
 	public long getId() {
 		return id;
