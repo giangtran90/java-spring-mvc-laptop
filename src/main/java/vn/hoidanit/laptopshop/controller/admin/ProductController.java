@@ -82,7 +82,7 @@ public class ProductController {
 	public String getUpdateProductPage(Model model,  @PathVariable Long id) {
 		Product product = productService.fetchProductById(id);
 		model.addAttribute("updateProduct", product);
-		return "/admin/product/update";
+		return "admin/product/update";
 	}
 	
 	// update product

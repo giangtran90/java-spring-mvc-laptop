@@ -83,6 +83,11 @@
 			<div class="row g-4 mb-5">
 				<div class="col-lg-8 col-xl-9">
 					<div class="row g-4">
+						<div>
+							<ol class="breadcrumb">
+					             <li class="breadcrumb-item active"><a href="/" target="">Home</a>/Chi tiết sản phẩm</li>
+					         </ol>
+						</div>
 						<div class="col-lg-6">
 							<div class="border rounded">
 								<a href="#"> <img src="/images/product/${product.image}"
@@ -149,29 +154,29 @@
 								<ul class="list-unstyled fruite-categorie">
 									<li>
 										<div class="d-flex justify-content-between fruite-name">
-											<a href="#"><i class="fas fa-apple-alt me-2"></i>Apples</a> <span>(3)</span>
+											<a href="#"><i class="fas fa-apple-alt me-2"></i>Apple</a> <span>(3)</span>
 										</div>
 									</li>
 									<li>
 										<div class="d-flex justify-content-between fruite-name">
-											<a href="#"><i class="fas fa-apple-alt me-2"></i>Oranges</a>
+											<a href="#"><i class="fas fa-apple-alt me-2"></i>Dell</a>
 											<span>(5)</span>
 										</div>
 									</li>
 									<li>
 										<div class="d-flex justify-content-between fruite-name">
-											<a href="#"><i class="fas fa-apple-alt me-2"></i>Strawbery</a>
+											<a href="#"><i class="fas fa-apple-alt me-2"></i>Asus</a>
 											<span>(2)</span>
 										</div>
 									</li>
 									<li>
 										<div class="d-flex justify-content-between fruite-name">
-											<a href="#"><i class="fas fa-apple-alt me-2"></i>Banana</a> <span>(8)</span>
+											<a href="#"><i class="fas fa-apple-alt me-2"></i>Acer</a> <span>(8)</span>
 										</div>
 									</li>
 									<li>
 										<div class="d-flex justify-content-between fruite-name">
-											<a href="#"><i class="fas fa-apple-alt me-2"></i>Pumpkin</a>
+											<a href="#"><i class="fas fa-apple-alt me-2"></i>LG</a>
 											<span>(5)</span>
 										</div>
 									</li>
