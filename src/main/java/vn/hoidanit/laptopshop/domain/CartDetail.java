@@ -27,7 +27,7 @@ public class CartDetail {
 	private Product product;
 
 	private int quantity;
-	private long price;
+	private double price;
 
 	public long getId() {
 		return id;
@@ -61,11 +61,11 @@ public class CartDetail {
 		this.quantity = quantity;
 	}
 
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
