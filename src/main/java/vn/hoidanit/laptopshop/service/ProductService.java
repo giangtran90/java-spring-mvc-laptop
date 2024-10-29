@@ -86,9 +86,18 @@ public class ProductService {
 					oldCartDetail.setQuantity(oldCartDetail.getQuantity() + 1);
 					this.cartDetailRepository.save(oldCartDetail);
 				}		
-			}
-			
+			}	
 		}
-		
+	}
+	
+	public List<CartDetail> fetchCartDetailByUser(String email){
+		User user = this.userRepository.findByEmail(email);
+		if (user != null) {
+			Cart cart = cartRepository.findByUser(user);
+			if (cart != null) {
+				return this.cartDetailRepository.findAllByCart(cart);
+			}
+		}
+		return null;		
 	}
 }
