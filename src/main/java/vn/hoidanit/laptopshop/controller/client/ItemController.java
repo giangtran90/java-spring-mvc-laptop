@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.Product;
-import vn.hoidanit.laptopshop.repository.CartDetailRepository;
-import vn.hoidanit.laptopshop.repository.CartRepository;
 import vn.hoidanit.laptopshop.service.ProductService;
 
 @Controller
@@ -36,7 +33,7 @@ public class ItemController {
 		HttpSession session = request.getSession(false);
 		// check xem sản phẩm đã exist trong cart hay chưa
 		String email = (String) session.getAttribute("email");
-		this.productService.handleAddProductToCart(id, email);
+		this.productService.handleAddProductToCart(id, email, session);
 		
 		return "redirect:/";
 	}

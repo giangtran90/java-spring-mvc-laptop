@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
 import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Product;
@@ -49,7 +50,7 @@ public class ProductService {
 		this.productRepository.deleteById(id);
 	}
 
-	public void handleAddProductToCart(long id, String email) {
+	public void handleAddProductToCart(long id, String email, HttpSession session) {
 		User user = this.userRepository.findByEmail(email);
 		if (user != null) {
 			// check xem user da co cart hay chua neu chua thi them moi vao
@@ -57,7 +58,7 @@ public class ProductService {
 			if (cart == null) {
 				Cart nCart = new Cart();
 				nCart.setUser(user);
-				nCart.setSum(1);
+				nCart.setSum(0);
 				
 				cart = this.cartRepository.save(nCart);
 			}
@@ -67,13 +68,24 @@ public class ProductService {
 			if (productOptional.isPresent()) {
 				Product product = productOptional.get();
 				
-				CartDetail cartDetail = new CartDetail();
-				cartDetail.setCart(cart);
-				cartDetail.setPrice(product.getPrice());
-				cartDetail.setProduct(product);
-				cartDetail.setQuantity(1);
-				
-				this.cartDetailRepository.save(cartDetail);
+				// check CartDetail
+				CartDetail oldCartDetail = this.cartDetailRepository.findByCartAndProduct(cart, product);
+				if (oldCartDetail == null) {
+					CartDetail cartDetail = new CartDetail();
+					cartDetail.setCart(cart);
+					cartDetail.setPrice(product.getPrice());
+					cartDetail.setProduct(product);
+					cartDetail.setQuantity(1);		
+					this.cartDetailRepository.save(cartDetail);
+					// luu sum sau khi them vao gio hang + them sum vao session de hien thi
+					int s = cart.getSum() + 1;
+					cart.setSum(s);
+					this.cartRepository.save(cart);
+					session.setAttribute("sum", s);
+				} else {
+					oldCartDetail.setQuantity(oldCartDetail.getQuantity() + 1);
+					this.cartDetailRepository.save(oldCartDetail);
+				}		
 			}
 			
 		}
