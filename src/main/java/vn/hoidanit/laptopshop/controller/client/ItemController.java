@@ -40,4 +40,9 @@ public class ItemController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/cart")
+	public String getCart() {
+		return "client/cart/cart";
+	}
 }
