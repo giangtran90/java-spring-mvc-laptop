@@ -7,4 +7,4 @@ Training Spring MVC
 + Chuong 11: feature/20241018_chuong_11_upload_file
 + Chuong 12: feature/20241021_chuong_12_module_product
 + Chuong 13: feature/20241022_chuong_13_Module_Auth
-+ Chuong 14: feature/20241024_chuong_14_Cart_Order
++ Chuong 14: feature/20241024_chuong_14_Cart_Order + feature/20241030_chuong_14_order_cart_2
