@@ -108,7 +108,9 @@
 									</div>
 								</th>
 								<td>
-									<p class="mb-0 mt-4">${cartDetail.product.name}</p>
+									<p class="mb-0 mt-4">
+										<a href="/product/${cartDetail.product.id}">${cartDetail.product.name}</a>
+									</p>
 								</td>
 								<td>
 									<p class="mb-0 mt-4"><fmt:formatNumber type="number" value="${cartDetail.price}" /> đ</p>

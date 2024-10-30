@@ -100,4 +100,8 @@ public class ProductService {
 		}
 		return null;		
 	}
+
+	public Cart fetchByUser(User user) {
+		return this.cartRepository.findByUser(user);
+	}
 }
